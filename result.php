@@ -7,8 +7,31 @@
 </head>
 <body>
     <?php
-        $h = $_GET['height']/100;
-        $w = $_GET['weight'];
+        if(isset($_GET['height']))
+        {
+            $h = $_GET['height'];
+        }else if(isset($_POST['height']))
+        {
+            $h = $_POST['height'];
+        }else
+        {
+            echo "請使用正確管道進入<br>";
+            echo "<a href='index.php'> 回計算BMI首頁 </a>";
+            exit();
+        }
+        $h = $h/100;
+        if(isset($_GET['weight']))
+        {
+            $w = $_GET['weight'];    
+        }else if(isset($_POST['weight']))
+        {
+            $w = $_POST['weight'];
+        }else
+        {
+            echo "請使用正確管道進入<br>";
+            echo "<a href='index.php'> 回計算BMI首頁 </a>";
+            exit();
+        }
         // round 取小數到第幾位 下面是取到第二位
         $bmi = round($w/($h*$h),2);
         if($bmi >= 18.5 && $bmi <= 24)
@@ -31,14 +54,13 @@
             $cText = "中度重度肥胖肥胖";
         }
     ?>
-
     <h1>BMI結果</h1>
-    <div>你的身高:<?=$_GET['height']?>公分</div>
-    <div>你的體重:<?=$_GET['weight']?>公斤</div>
+    <div>你的身高:<?=$h*100?>公分</div>
+    <div>你的體重:<?=$w?>公斤</div>
     <div>你的BMI為:<?=$bmi?></div>
     <div>你的體位判定為:<?=$cText?></div>
     <div>
-        <a href="index.php">回計算BMI首頁</a>
+        <a href="index.php?bmi=<?=$bmi?>">回計算BMI首頁</a>
     </div>
 </body>
 </html>

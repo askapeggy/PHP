@@ -9,7 +9,11 @@
     <?php
         $a1 = 'aska';
         $p1 = 'aska';
+<<<<<<< HEAD
         if(!isset($_POST['account']))
+=======
+        if(isset($_POST['account']))
+>>>>>>> fde1955 (萬年曆)
         {
             echo "請輸入帳號<br>";
             echo "<a href='login.php'>回到登入頁面</a>";

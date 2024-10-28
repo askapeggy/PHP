@@ -9,6 +9,7 @@
     <?php
         $h = $_GET['height']/100;
         $w = $_GET['weight'];
+        // round 取小數到第幾位 下面是取到第二位
         $bmi = round($w/($h*$h),2);
         if($bmi >= 18.5 && $bmi <= 24)
         {

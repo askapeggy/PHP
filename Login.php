@@ -58,8 +58,9 @@
 </head>
 <body>
     <?php
-        session_start();
-        if(isset($_SESSION['login']))
+        //session_start();
+        //if(isset($_SESSION['login']))
+        if(isset($_COOKIE['login']))
         {
             echo "你已登入";
             exit();

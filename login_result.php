@@ -9,7 +9,7 @@
     <?php
         $a1 = 'aska';
         $p1 = 'aska';
-        if(isset($_POST['account']))
+        if(!isset($_POST['account']))
         {
             echo "請輸入帳號<br>";
             echo "<a href='login.php'>回到登入頁面</a>";
@@ -18,7 +18,7 @@
         {
             $a = $_POST['account'];
         }
-        if(empty($_POST['password']))
+        if(!isset($_POST['password']))
         {
             echo "請輸入密碼<br>";
             echo "<a href='login.php'>回到登入頁面</a>";

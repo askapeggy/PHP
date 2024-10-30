@@ -12,10 +12,16 @@
             padding:5px 10px;
             text-align:center;
             border:1px solid #999;
+            width: 65px;
+            box-sizing: border-box;
         }
         .holiday{
             background:pink;
             color:#999;
+        }
+        .holiday_1{
+            background:pink;
+            color:red;
         }
         .textColor
         {
@@ -26,6 +32,12 @@
             background:blue;
             color:white;
             font-weight: bolder;
+
+            height: 200%; /* 確保填滿整個 td 高度 */
+            width: 100%; /* 確保填滿整個 td 寬度 */
+            margin: 0; /* 去掉邊距 */
+            padding: 0; /* 去掉內邊距 */
+            line-height: 65px; /* 使文字在 td 中垂直居中（根據 td 高度調整） */        
         }
     </style>
 </head>
@@ -42,6 +54,18 @@
         <lu></lu>
     </ul>
     <?php
+        //節日 
+        $holidays =[
+            '1-1' => "元旦",
+            '2-10' => "農曆新年",
+            '4-4' => "兒童節",
+            '4-5' => "清明節",
+            '5-1' => "勞動節",
+            '10-10' => "國慶日",
+        ];
+
+        $nowY = date("Y");
+        $nowM = date("m");
         //先取得是否有回傳值
         if(!isset($_GET['y']))
         {
@@ -119,7 +143,7 @@
                 {
                     if($j == 0 || $j == 6)
                     {
-                        echo "<td class='holiday'>";
+                        echo "<td class='holiday_1'>";
                     }else
                     {
                         echo "<td>";
@@ -129,8 +153,13 @@
                     {
                         if(date('d') == $dayNum)
                         {
-                            //echo "<p class='today'>";                            
-                            echo "<p>";                            
+                            if($nowY == $year && $nowM == $month)
+                            {
+                                echo "<p class='today'>";                            
+                            }else
+                            {
+                                echo "<p>";                            
+                            }
                         }else
                         {
                             echo "<p>";
@@ -147,6 +176,12 @@
                             echo $daysInMonthUp - $w + $j + 1;
                         }
                         echo "</p>";
+                    }
+                    //判斷節日
+                    $txt = $month."-".$dayNum;
+                    if(isset($holidays[$txt]))
+                    {
+                        echo "<br>".$holidays[$txt];
                     }
                     echo "</td>";
                 }

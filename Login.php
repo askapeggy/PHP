@@ -57,9 +57,16 @@
     </style>
 </head>
 <body>
-
+    <?php
+        session_start();
+        if(isset($_SESSION['login']))
+        {
+            echo "你已登入";
+            exit();
+        }
+    ?>
     <!--<h1>輸入帳戶密碼<h1>-->
-    <form action="login_result.php" method="POST">
+    <form action="check_acc.php" method="POST">
         <label for="username">帳號:</label>
         <input type="text" id="account" name="account" required>
 

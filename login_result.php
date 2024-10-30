@@ -9,6 +9,11 @@
     <?php
         $a1 = 'aska';
         $p1 = 'aska';
+        if(!isset($_GET['login']))
+        {
+            header("location:login.php");
+            exit();
+        }
         if(!isset($_POST['account']))
         {
             echo "請輸入帳號<br>";
